@@ -55,9 +55,6 @@ def run_spotify_etl():
     today = datetime.datetime.now()
     yesterday = today - datetime.timedelta(days=1)
     yesterday_unix_timestamp = int(yesterday.timestamp()) * 1000
-    
-    today = datetime.datetime.now()
-    yesterday_unix_timestamp = int(today.timestamp()) * 1000
 
     # Download all songs you've listened to "after yesterday", which means in the last 24 hours      
     r = requests.get("https://api.spotify.com/v1/me/player/recently-played?after={time}".format(time=yesterday_unix_timestamp), headers = headers)
